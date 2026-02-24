@@ -1,0 +1,19 @@
+\ProvidesPackage{mknmacro}[2026/02/24 v0.1 mknmacro by KusaReMKN]
+
+\RequirePackage{mathtools}
+
+% かっこ類
+\DeclarePairedDelimiter\pq\lparen\rparen% ()
+\DeclarePairedDelimiter\bq\lbrack\rbrack% []
+\DeclarePairedDelimiter\brq\lbrace\rbrace% {}
+\DeclarePairedDelimiter\abs\lvert\rvert% ||
+\DeclarePairedDelimiter\floor\lfloor\rfloor% ⌊⌋ 床関数
+\DeclarePairedDelimiter\ceil\lceil\rceil% ⌈⌉ 天井関数
+
+% 参照
+\NewDocumentCommand\図{m}{\figurename\nobreak\ref{#1}}
+\NewDocumentCommand\表{m}{\tablename\nobreak\ref{#1}}
+\NewDocumentCommand\equationname{}{式}
+\NewDocumentCommand\式{m}{\equationname\nobreak\eqref{#1}}
+\NewDocumentCommand\citename{}{文献}
+\NewDocumentCommand\文献{m}{\citename\nobreak\cite{#1}}
