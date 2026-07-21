@@ -17,7 +17,6 @@
   gutter=20mm,
   fore-edge=20mm,
   column_gap=10mm,
-  open_bracket_pos=nibu_tentsuki,
 }{jlreq}
 \DeclareOption*{
   \PassOptionsToClass{\CurrentOption}{jlreq}
@@ -78,10 +77,8 @@
     PTUフォーラム{\@ForumYear}，
     第{\@ForumNumber}回 職業能力開発研究発表講演会 講演論文
   },
-  %odd_head_format={\underline{\makebox[\jlreqyokoheadlength]{#1}}},
-  odd_head_format={\framebox(\jlreqyokoheadlength,0pt){\raisebox{15bp}{#1}}},
-  %odd_foot_format={$\overline{\text{\makebox[\jlreqyokoheadlength]{\rule{0bp}{.6\baselineskip}#1}}}$},
-  odd_foot_format={\raisebox{9bp}[0bp][0bp]{\framebox(\jlreqyokoheadlength,0pt)[l]{\raisebox{-27bp}{#1}}}},
+  odd_head_format={\underline{\makebox[\jlreqyokoheadlength]{#1}}},
+  odd_foot_format={$\overline{\makebox[\jlreqyokoheadlength]{\text{#1}\hfill}}$},
 }
 
 % 表題とか著者とか表示する
