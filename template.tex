@@ -1,7 +1,11 @@
-\documentclass[lualatex,fleqn]{uitex}
+\documentclass[
+  lualatex,
+  fleqn,
+  jlreq_notes,
+]{uitex}
 
 % 末尾の揃え
-\usepackage{flushend}
+\usepackage[checkfloat]{flushend}
 
 % 画像
 \usepackage{graphicx}
@@ -27,7 +31,6 @@
 \author{○上羽 未栞（東京広域電話網）\and 橘 紗鳥（み研究所）}
 
 \pagestyle{forum}
-\ForumYear{2026}
 \ForumNumber{34}
 \ForumDate{2026/11/27〜28}
 
@@ -62,6 +65,7 @@
 「テンプレートをダウンロードしてご使用ください」とあります．
 このクラスファイルを用いた組版の結果は，
 上で述べられているテンプレートを用いた組版の結果と異なる可能性があります．
+実際，見栄えを良くするために，指定された書式を一部変更しています．
 発表論文の執筆者は，このことを理解し，
 自身の判断によってこのクラスファイルを用いてください．
 このクラスファイルに関する詳細なライセンスについては，
@@ -94,8 +98,7 @@ GitHub（\url{https://github.com/KusaReMKN/uitex}）から
   研究 二郎（職業未来技研），\\% 改行できます
   発明 三郎（ものづくり製作所）}
 \pagestyle{forum}% 講演論文の体裁
-\ForumYear{2026}% 開催年
-\ForumNumber{26}% 第何回
+\ForumNumber{36}% 第何回
 \ForumDate{2026/11/27〜28}% 開催日
 \begin{document}
 \maketitle
@@ -139,8 +142,8 @@ GitHub（\url{https://github.com/KusaReMKN/uitex}）から
     \verb|\pagestyle|で体裁を指定します．
     \texttt{forum}を指定してこの体裁にします．
   \item
-    \verb|\ForumYear|，\verb|\ForumNumber|，及び \verb|\ForumDate|で
-    PTUフォーラムの開催される年，回，及び日付をそれぞれ指定します．
+    \verb|\ForumNumber|，及び \verb|\ForumDate|で
+    PTUフォーラムの開催される回，及び日付をそれぞれ指定します．
   \item
     \verb|\maketitle|で論文タイトルと著者一覧とが出力されます．
 \end{itemize}
