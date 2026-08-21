@@ -181,4 +181,7 @@
 % 表の上下に使う太めの罫線
 \def\Hline{\noalign{\hrule height 1pt}}
 
+% UiTeX のロゴ
+\DeclareRobustCommand\UiTeX{U\kern-.125em\lower.5ex\hbox{I}\kern-.1667em\TeX}
+
 % ex: se et ts=2 :
