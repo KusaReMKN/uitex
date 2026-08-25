@@ -43,23 +43,23 @@
 
 % 見出し関連
 \ModifyHeading{section}{
-  font=\gtfamily\Large,
-  label_format={\thesection.},
+  font=\sffamily\Large,
+  label_format={\rmfamily\thesection.},
   after_label_space=1\jlreq@zw,% XXX: 雰囲気（実際にはタブ）
   lines=1,
   before_lines=1,
   after_lines=1,
 }
 \ModifyHeading{subsection}{
-  font=\gtfamily\normalsize,
-  label_format={\thesubsection.},
+  font=\sffamily\normalsize,
+  label_format={\rmfamily\thesubsection.},
   after_label_space=1.7\jlreq@zw,% XXX: 雰囲気（実際にはタブ）
   lines=1,
   before_lines=1,
 }
 \ModifyHeading{subsubsection}{
-  font=\gtfamily\normalsize,
-  label_format={\thesubsubsection.},
+  font=\sffamily\normalsize,
+  label_format={\rmfamily\thesubsubsection.},
   after_label_space=1.7\jlreq@zw,% XXX: 雰囲気（実際にはタブ）
   lines=1,
   before_lines=1,
