@@ -34,7 +34,7 @@
 
 % 天とか地とかの距離を微調整
 \setlength{\headsep}{12pt}
-\setlength{\footskip}{22pt}
+\setlength{\footskip}{28pt}
 
 \jlreqsetup{caption_font=\rmfamily\normalsize}
 \jlreqsetup{caption_label_font=\rmfamily\normalsize}
@@ -88,7 +88,10 @@
   nombre_font={\sffamily},
   running_head_position=top-center,
   nombre_position=bottom-left,
-  nombre={（{\@ForumDate}）},
+  nombre={\vbox{%
+    \vspace{6pt}%
+    \hspace{0pt}% カッコの頭を天ツキにしないため
+    （{\@ForumDate}）}},
   odd_running_head={%
     PTUフォーラム{\@ForumYear}，
     第{\@ForumNumber}回 職業能力開発研究発表講演会 講演論文},
