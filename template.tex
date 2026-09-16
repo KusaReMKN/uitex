@@ -15,6 +15,8 @@
 % フォントの設定
 \usepackage[match,deluxe,expert,jfm_yoko=jlreq,jfm_tate=jlreqv]{luatexja-preset}
 \usepackage[varg]{newtx}
+\usepackage{csquotes}
+
 % 数式の太字
 \usepackage{bm}
 
@@ -68,6 +70,43 @@
 
 なお，このクラスファイルに関する詳細なライセンスについては，
 同梱されているファイル\texttt{LICENSE}を参照してください．
+
+\section{クラスファイルの説明}
+
+クラスファイル\texttt{uitex.cls}は，
+「PTUフォーラム」の
+「職業能力開発研究発表講演会」の発表論文のための体裁を提供します．
+このクラスファイルの最新版をGitHub~\cite{uitex}からダウンロードできます．
+なお，このクラスファイルは，
+阿部紀行氏によって開発された\texttt{jlreq}~\cite{jlreq}をラップしたものです．
+
+\subsection{テンプレートと記述方法}
+
+\図{fig:template}のように記述します．
+このクラスファイルに同梱される
+ファイル\texttt{template.tex}も参照してください．
+
+\begin{thebibliography}{9}
+  \bibitem{PTUForum}
+    職業能力開発総合大学校：
+    「PTUフォーラム」，
+    基盤整備センター，
+    <\url{https://www.uitec.jeed.go.jp/kiban/research/}>，
+    2026-09参照．
+  \bibitem{uitex}
+    KusaReMKN:
+    \enquote{KusaReMKN/uitex},
+    GitHub,
+    <\url{https://github.com/KusaReMKN/uitex}>,
+    accessed in 2026-09.
+  \bibitem{jlreq}
+    N.~Abe:
+    \enquote{abenori/jlreq},
+    GitHub,
+    <\url{https://github.com/abenori/jlreq}>,
+    accessed in 2026-09.
+
+\end{thebibliography}
 
 \section{クラスファイルの説明}
 
