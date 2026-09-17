@@ -6,6 +6,9 @@
 
 % 末尾の揃え
 \usepackage[checkfloat]{flushend}
+\usepackage{luatexja-adjust}
+\ltjenableadjust[lineend=extended,priority=true,profile=true,linestep=true]
+\ltjsetparameter{linestep_factor=0.25}
 
 % 画像
 \usepackage{graphicx}
@@ -25,11 +28,27 @@
 % URL を表示する
 \usepackage{url}
 
+\usepackage[most]{tcolorbox}
+\NewTCBListing{uitexample}{}{%
+  listing only,
+  top=.5\zh, bottom=.5\zh,
+  left=.5\zw, right=.5\zw,
+}
+\NewTCBListing{uitexconsole}{}{%
+  listing only,
+  top=.5\zh, bottom=.5\zh,
+  left=.5\zw, right=.5\zw,
+  every listing line*={\$\ },
+}
+
 \usepackage{siunitx}
 \usepackage{jslogo}
 
+\protected\def\+{\insertxkanjiskip late}
 \DeclareRobustCommand\LuaLaTeX{Lua\protect\LaTeX}
 \DeclareRobustCommand\sfLuaLaTeX{Lua\protect\sfLaTeX}
+
+\setlength{\leftmargini}{1\zw}
 
 \title{%
   職業能力開発研究発表講演会に投稿する発表論文を作成するための\\
@@ -52,6 +71,9 @@
 某大学校において例年開催される「PTUフォーラム」の
 「職業能力開発研究発表講演会」に提出する発表論文を{\LuaLaTeX}で作成するための
 私家版クラスファイル\texttt{uitex.cls}の使用方法について説明します．
+
+{\LaTeX}のインストール方法や{\LaTeX}を用いた文書の作成方法については，
+\文献{TeXWiki,美文書}などを参照してください．
 発表論文を作成する上での注意事項については，
 某大学校のウェブサイト上の「基盤整備センター」の
 「PTUフォーラム」のページ\cite{PTUForum}で例年配布されている
@@ -82,11 +104,91 @@
 
 \subsection{テンプレートと記述方法}
 
+\begin{figure}[tb]
+  \begin{uitexample}
+\documentclass[lualatex,fleqn]{uitex}
+\usepackage{mathtools,amssymb}% 数式関連
+\usepackage[varg]{newtx}% 欧文フォント
+%\usepackage{bm}% 太字の数式
+%\usepackage{graphicx}% 図の取り込み
+\usepackage{mknmacro}% 便利マクロ集
+\title{論文タイトル\\改行もできます}
+\author{%
+  ○能開 花子，教育 一郎（某大学校），%
+  研究 二郎（職業未来技研），\\% 改行できます
+  発明 三郎（ものづくり製作所）}
+\pagestyle{forum}% 発表論文の体裁
+\ForumNumber{36}% 第何回
+\ForumDate{2026/11/27\,〜\,28}% 開催日
+\begin{document}
+\maketitle
+\section{はじめに}
+ほげほげ……
+\begin{thebibliography}{9}
+  \bibitem{hoge}
+\end{thebibliography}
+\end{document}
+  \end{uitexample}
+  \vspace{-.5\baselineskip}
+  \caption{記述例}
+  \label{fig:template}
+\end{figure}
+
 \図{fig:template}のように記述します．
 このクラスファイルに同梱される
 ファイル\texttt{template.tex}も参照してください．
 
+記述すべき項目について順に説明します．
+
+\begin{itemize}
+  \item
+    ドキュメントクラスに\verb|uitex|を指定します．
+    併せて，クラスオプションを指定します．
+    {\LuaLaTeX}で組版を行うために\verb|lualatex|を，
+    数式を左側に寄せるために\verb|fleqn|を指定します．
+  \item
+    \verb|mathtools|パッケージ及び\verb|amssymb|パッケージは，
+    数式に関連する様々な機能を提供します．
+  \item
+    欧文フォントにTimes系を適用するため，
+    \verb|newtx|パッケージを用います．
+    また，例に記載されていませんが，
+    より「ちゃんとした」和文フォントを設定するために，
+    \verb|match,deluxe,expert|などのオプションを添えて
+    \verb|luatexja-preset|パッケージを用いても良いです．
+    詳細は，次のコマンドを実行して表示されるドキュメントを参照してください．
+    \begin{uitexconsole}
+texdoc luatexja
+    \end{uitexconsole}
+  \item
+    数式中で太字（$\bm{v}$や$\bm{M}$など）を用いるために
+    \verb|bm|パッケージを用いる場合，
+    これを\verb|newtx|パッケージよりも後に指定してください．
+  \item
+    画像の取り込みを行う場合，
+    \verb|graphicx|パッケージを用います．
+  \item
+    \verb|mknmacro|パッケージを用いると，
+    図表などの参照や数式中の括弧などに関連する便利なマクロが定義されます．
+    同梱されているスタイルファイル\texttt{mknmacro.sty}が必要です．
+  \item
+    \verb|\title|で発表論文の題目を指定します．
+    題目中で改行するには\verb|\\|を用います．
+\end{itemize}
+
+
+
 \begin{thebibliography}{9}
+  \bibitem{TeXWiki}
+    \enquote{{\TeX} Wiki},
+    <\url{https://texwiki.texjp.org/}>,
+    accessed in 2026-09.
+  \bibitem{美文書}
+    奥村晴彦，黒木裕介：
+    「［改訂第9版］{\LaTeX}美文書作成入門」，
+    株式会社技術評論社，
+    東京
+    （2023）．
   \bibitem{PTUForum}
     職業能力開発総合大学校：
     「PTUフォーラム」，
