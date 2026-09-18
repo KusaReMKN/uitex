@@ -12,12 +12,16 @@
 
 % 画像
 \usepackage{graphicx}
+\usepackage{subcaption}
+\newlength{\myLineWidth}
+\setlength{\myLineWidth}{\linewidth}
 
 % 数式関連
 \usepackage{mathtools,amssymb}
 % フォントの設定
 \usepackage[match,deluxe,expert,jfm_yoko=jlreq,jfm_tate=jlreqv]{luatexja-preset}
 \usepackage[varg]{newtx}
+\DeclareEmphSequence{\bfseries,\sffamily,\ebseries}
 \usepackage{csquotes}
 
 % 数式の太字
@@ -59,7 +63,7 @@
 
 \pagestyle{forum}
 \ForumNumber{34}
-\ForumDate{2026/11/27〜28}
+\ForumDate{2026/11/27\,〜\,28}
 
 \begin{document}
 
@@ -109,8 +113,8 @@
 \documentclass[lualatex,fleqn]{uitex}
 \usepackage{mathtools,amssymb}% 数式関連
 \usepackage[varg]{newtx}% 欧文フォント
-%\usepackage{bm}% 太字の数式
-%\usepackage{graphicx}% 図の取り込み
+\usepackage{bm}% 太字の数式
+\usepackage{graphicx}% 図の取り込み
 \usepackage{mknmacro}% 便利マクロ集
 \title{論文タイトル\\改行もできます}
 \author{%
@@ -148,7 +152,7 @@
     数式を左側に寄せるために\verb|fleqn|を指定します．
   \item
     \verb|mathtools|パッケージ及び\verb|amssymb|パッケージは，
-    数式に関連する様々な機能を提供します．
+    数式に関連する様々な機能を提供します（\ref{sec:高度な数式}参照）．
   \item
     欧文フォントにTimes系を適用するため，
     \verb|newtx|パッケージを用います．
@@ -161,22 +165,129 @@
 texdoc luatexja
     \end{uitexconsole}
   \item
-    数式中で太字（$\bm{v}$や$\bm{M}$など）を用いるために
-    \verb|bm|パッケージを用いる場合，
-    これを\verb|newtx|パッケージよりも後に指定してください．
+    \verb|bm|パッケージは，数式中で太字を用いるための機能を提供します
+    （\ref{sec:高度な数式}参照）．
   \item
     画像の取り込みを行う場合，
-    \verb|graphicx|パッケージを用います．
+    \verb|graphicx|パッケージを用います
+    （\ref{sec:図の取り込み}参照）．
   \item
     \verb|mknmacro|パッケージを用いると，
     図表などの参照や数式中の括弧などに関連する便利なマクロが定義されます．
     同梱されているスタイルファイル\texttt{mknmacro.sty}が必要です．
   \item
     \verb|\title|で発表論文の題目を指定します．
-    題目中で改行するには\verb|\\|を用います．
+    \verb|\\|\+で改行できます．
+  \item
+    \verb|\author|で発表論文の著者を指定します．
+    各著者を全角カンマ（，）で区切り，所属を全角丸括弧「（」「）」で囲みます．
+    やはり\+\verb|\\|\+で改行できます．
+  \item
+    \verb|\pagestyle|で発表論文の体裁を指定します．
+    \verb|forum|を指定することで，
+    職業能力開発研究発表講演会用の体裁になります．
+  \item
+    \verb|\ForumNumber|及び\+\verb|\ForumDate|で
+    PTUフォーラムの開催される回，及び日付をそれぞれ指定します．
+    \verb|\ForumDate|に指定する日付の「〜」の両側に
+    狭いアキ（\verb|\,|）を置いておくと，より見栄えよく仕上がります．
+    ヘッダに表示される「PTUフォーラムYYYY」の「YYYY」の部分は，
+    \verb|ForumDate|で指定された文字列のうち，
+    半角スラッシュ（\verb|/|）に初めて遭遇するまでの部分を
+    自動的に切り出して設定されます．
+  \item
+    \verb|\begin{document}|\+と\+\verb|\end{document}|\+との間に
+    本文を記述します．
+    なお，\verb|\maketitle|で発表論文の題目と著者一覧とが出力されます．
 \end{itemize}
 
+\subsection{見出し}
 
+見出しが連続する場合，
+つまり，\verb|\section|の直後に\verb|\subsection|が続くなどする場合，
+「論文テンプレート」の3.と3.1.との間や3.4.と3.4.1.との間のように
+適切な行取りとなるように設定されています．
+
+\subsection{数式}
+
+ディスプレイ数式は，
+\式{eq:example}のように表示されます．
+数式を丸括弧付きで参照するために，
+\verb|\eqref|を使うと便利です．
+\begin{equation}
+  \zeta\pq{s}
+  \coloneq \sum_{n=1}^{\infty} \frac{1}{n^s}
+  = \frac{1}{1^s} + \frac{1}{2^s} + \frac{1}{3^s} + \frac{1}{4^s} + \cdots
+  \label{eq:example}
+\end{equation}
+
+% for \subsubsection{画像の取り込み}
+\begin{figure*}[tb]
+  \centering
+  \begin{subfigure}{\myLineWidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{./figures/power.pdf}
+    \caption{ベクタ形式}
+    \label{fig:ベクタ形式}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{\myLineWidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{./figures/power.png}
+    \caption{ラスタ形式}
+    \label{fig:ラスタ形式}
+  \end{subfigure}
+  \caption{図の比較}
+\end{figure*}
+
+\subsubsection{高度な数式}
+\label{sec:高度な数式}
+
+\verb|mathtools|パッケージを用いることで，
+より高度な数式を記述できます．
+\verb|mathtools|パッケージは，
+\verb|amsmath|パッケージを内部で読み込みます．
+このパッケージを用いる場合，
+これを\verb|newtx|パッケージよりも\emph{前に}指定してください．
+
+\verb|bm|パッケージを用いることで，
+数式中で$\bm{v}$や$\bm{M}$などの太字を簡単に表示できます．
+$\bm{\alpha}$や$\bm{\beta}$などのギリシャ文字も太字にできます．
+このパッケージを用いる場合，
+これを\verb|newtx|パッケージよりも\emph{後に}指定してください．
+
+\subsection{図表}
+
+図や表を配置するために，
+\verb|figure|環境や\verb|table|環境を用います．
+二段抜きの場合は，
+\verb|figure*|\+環境や\verb|table*|\+環境を用います．
+\verb|[t]|や\verb|[tb]|のように，
+出力位置を指定するためのオプションを\emph{必ず}指定してください．
+
+\subsubsection{画像の取り込み}
+
+\verb|graphicx|パッケージを用いることで，
+画像の取り込みを行えます．
+ブロック図やグラフなど，
+線による描画が主である画像を取り込む場合，
+PDFやEPSなどのベクタ形式の使用を検討してください．
+ベクタ形式の図は拡大してもボヤけずに表示できます．
+\図{fig:ベクタ形式}と\図{fig:ラスタ形式}とを比較してください．
+図を取り込む際，
+\verb|width=\linewidth|のオプションを指定すると，
+行の幅一杯に画像を表示できます．
+\文献{美文書}の第7章を併せて参照してください．
+
+\verb|pdfcrop|コマンドを用いることで，
+PDFファイルの余白を削除できます．
+このコマンドは，{\TeX} Liveに含まれています．
+例えば，次のように実行すると，
+\texttt{file.pdf}の余白を削除した\texttt{file-crop.pdf}が生成されます．
+
+\begin{uitexconsole}
+pdfcrop file.pdf
+\end{uitexconsole}
 
 \begin{thebibliography}{9}
   \bibitem{TeXWiki}
