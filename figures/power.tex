@@ -1,0 +1,43 @@
+\documentclass[lualatex]{standalone}
+
+\usepackage[match,deluxe,expert]{luatexja-preset}
+\usepackage{emoji}
+
+\usepackage{tikz}
+\usetikzlibrary{quotes, shapes.geometric}
+\tikzset{
+  process/.style={
+    rectangle,
+    draw,
+    align=center,
+    minimum width=3cm,
+    minimum height=1cm,
+    inner sep=0pt,
+  },
+  decision/.style={
+    diamond,
+    shape aspect=3,
+    draw,
+    align=center,
+    minimum width=3cm,
+    minimum height=1.25cm,
+    inner sep=0pt,
+  },
+}
+
+\renewcommand\familydefault\sfdefault
+\renewcommand\kanjifamilydefault\gtdefault
+
+\begin{document}
+\begin{tikzpicture}[y=-1cm, very thick]
+  \node[process]  (a) at (0.0, 0.00) {{\TeX}を使うのかい\\使わないのかい};
+  \node[decision] (b) at (0.0, 1.75) {どっち\\なんだい};
+  \node[process]  (c) at (4.5, 1.75) {自己研鑽が\\足りない};
+  \node[process]  (d) at (0.0, 3.50) {\emoji{muscle}パワー};
+  \draw[->] (a) -- (b);
+  \draw[->] (b) edge["使わない"{font=\scriptsize}] (c);
+  \draw[->] (b) edge["使う"{font=\scriptsize}] (d);
+  \draw[->] (c) -- (4.5, -1.00) -| (a);
+\end{tikzpicture}
+\end{document}
+% ex: se et ts=2 :
