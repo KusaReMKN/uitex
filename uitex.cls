@@ -154,6 +154,9 @@
 % 参考文献の調整
 \jlreqsetup{
   thebibliography_heading={
+    % 2行分進んでみて、改ページできそうだったらして、できなかったら2行分戻る
+    \par\vskip 0pt plus 2\baselineskip
+    \penalty-200\vskip 0pt minus 2\baselineskip
     \begingroup
     \sffamily\normalsize
     \vskip\baselineskip
