@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{uitex}[
-  2026/08/21
-  v0.2
+  2026/09/23
+  v0.3
   UiTeX by KusaReMKN
 ]
 
@@ -41,10 +41,15 @@
 
 \jlreqsetup{itemization_beforeafter_space=0bp}
 
+% 見出しに点（.）を付ける
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+\renewcommand{\thesubsubsection}{\thesubsection\arabic{subsubsection}.}
+
 % 見出し関連
 \ModifyHeading{section}{
   font=\sffamily\Large,
-  label_format={\rmfamily\thesection.},
+  label_format={\rmfamily\thesection},
   after_label_space=1\jlreq@zw,% XXX: 雰囲気（実際にはタブ）
   lines=1,
   before_lines=1,
@@ -52,14 +57,14 @@
 }
 \ModifyHeading{subsection}{
   font=\sffamily\normalsize,
-  label_format={\rmfamily\thesubsection.},
+  label_format={\rmfamily\thesubsection},
   after_label_space=1.7\jlreq@zw,% XXX: 雰囲気（実際にはタブ）
   lines=1,
   before_lines=1,
 }
 \ModifyHeading{subsubsection}{
   font=\sffamily\normalsize,
-  label_format={\rmfamily\thesubsubsection.},
+  label_format={\rmfamily\thesubsubsection},
   after_label_space=1.7\jlreq@zw,% XXX: 雰囲気（実際にはタブ）
   lines=1,
   before_lines=1,
