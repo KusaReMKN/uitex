@@ -1,0 +1,41 @@
+%#! latexmk -lualatex -synctex=1
+% !TeX program = lualatex
+\documentclass[lualatex,fleqn]{uitex}
+
+% 数式関連
+\usepackage{mathtools,amssymb,unicode-math}
+
+% フォントの設定
+\usepackage[match,deluxe,expert]{luatexja-preset}
+\setmainfont{TeX Gyre Termes}
+\setmathfont{TeX Gyre Termes Math}
+\setsansfont{TeX Gyre Heros}
+\setmonofont[FakeStretch=.8748]{Source Code Pro}
+
+% 便利マクロ集
+\usepackage{mknmacro}
+
+\title{論文タイトル\\改行もできます}
+\author{%
+  ○能開 花子，教育 一郎（某大学校），%
+  研究 二郎（某未来技研），\\% 改行できます
+  発明 三郎（某製作所）}
+
+\pagestyle{forum}% 発表論文の体裁
+\ForumNumber{36}% 第何回
+\ForumDate{2026/11/27\,〜\,28}% 開催日
+
+\begin{document}
+
+\maketitle
+
+\section{はじめに}
+
+ほげほげ……
+
+\begin{thebibliography}{9}
+  \bibitem{hoge}
+    ふがふが……
+\end{thebibliography}
+
+\end{document}
